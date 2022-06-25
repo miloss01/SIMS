@@ -26,6 +26,19 @@ namespace NaplatneRampeSrbije
         {
             InitializeComponent();
             _loginController = new LoginController();
+            using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
+            {
+                string query = "SELECT * FROM racun";
+                OleDbCommand command = new OleDbCommand(query, connection);
+                connection.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Racun c = new Racun(reader);
+                    _ = MessageBox.Show(c.VremeIzlaska.ToString());
+                }
+                reader.Close();
+            }
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)

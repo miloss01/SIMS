@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Text;
 
 namespace NaplatneRampeSrbije.Models
@@ -7,17 +8,23 @@ namespace NaplatneRampeSrbije.Models
     class NaplatnaStanica
     {
         public string ID { get; set; }
-        public Adresa Adresa { get; set; }
+        public string AdresaID { get; set; }
 
         public NaplatnaStanica()
         {
 
         }
 
-        public NaplatnaStanica(string iD, Adresa adresa)
+        public NaplatnaStanica(string iD, string adresaID)
         {
             ID = iD;
-            Adresa = adresa;
+            AdresaID = adresaID;
+        }
+
+        public NaplatnaStanica(OleDbDataReader reader)
+        {
+            ID = reader[0].ToString();
+            AdresaID = reader[1].ToString();
         }
     }
 }

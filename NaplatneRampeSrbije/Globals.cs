@@ -10,6 +10,8 @@ namespace NaplatneRampeSrbije
     {
         public static Radnik ulogovaniRadnik = null;
         public static string putanjaKonekcije = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source =" + Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\baza.accdb");
-        public static string formatDatuma = "dd.mm.yyyy. HH:MM";
+        public static string formatDatum = "dd.mm.yyyy.";
+        public static string formatDatumVreme = "dd.mm.yyyy. HH:MM";
+
     }
 }

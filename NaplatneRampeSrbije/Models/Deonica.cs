@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Text;
 
 namespace NaplatneRampeSrbije.Models
@@ -8,20 +9,28 @@ namespace NaplatneRampeSrbije.Models
     {
         public string ID { get; set; }
         public int Duzina { get; set; }
-        public NaplatnaStanica Pocetak { get; set; }
-        public NaplatnaStanica Kraj { get; set; }
+        public string PocetnaNaplatnaStanicaID { get; set; }
+        public string KrajnjaNaplatnaStanicaID { get; set; }
 
         public Deonica()
         {
 
         }
 
-        public Deonica(string id, int duzina, NaplatnaStanica pocetak, NaplatnaStanica kraj)
+        public Deonica(string id, int duzina, string pocetnaNaplatnaStanicaID, string krajnjaNaplatnaStanicaID)
         {
             ID = id;
             Duzina = duzina;
-            Pocetak = pocetak;
-            Kraj = kraj;
+            PocetnaNaplatnaStanicaID = pocetnaNaplatnaStanicaID;
+            KrajnjaNaplatnaStanicaID = krajnjaNaplatnaStanicaID;
+        }
+
+        public Deonica(OleDbDataReader reader)
+        {
+            ID = reader[0].ToString();
+            Duzina = Convert.ToInt32(reader[1]);
+            PocetnaNaplatnaStanicaID = reader[2].ToString();
+            KrajnjaNaplatnaStanicaID = reader[3].ToString();
         }
     }
 }
