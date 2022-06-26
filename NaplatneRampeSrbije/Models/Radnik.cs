@@ -1,11 +1,12 @@
-﻿using System;
+﻿using NaplatneRampeSrbije.Repository;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    class Radnik
+    public class Radnik
     {
         public string ID { get; set; }
         public string Ime { get; set; }
@@ -15,7 +16,7 @@ namespace NaplatneRampeSrbije.Models
         public RadnoMesto RadnoMesto { get; set; }
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
-        public string AdresaID { get; set; }
+        public Adresa Adresa { get; set; }
         public string MestoRadaID { get; set; }
 
         public Radnik()
@@ -23,7 +24,7 @@ namespace NaplatneRampeSrbije.Models
 
         }
 
-        public Radnik(string id, string ime, string prezime, Pol pol, string telefon, RadnoMesto radnoMesto, string korisnickoIme, string lozinka, string adresaID, string mestoRadaID)
+        public Radnik(string id, string ime, string prezime, Pol pol, string telefon, RadnoMesto radnoMesto, string korisnickoIme, string lozinka, Adresa adresa, string mestoRadaID)
         {
             ID = id;
             Ime = ime;
@@ -33,12 +34,13 @@ namespace NaplatneRampeSrbije.Models
             RadnoMesto = radnoMesto;
             KorisnickoIme = korisnickoIme;
             Lozinka = lozinka;
-            AdresaID = adresaID;
+            Adresa = adresa;
             MestoRadaID = mestoRadaID;
         }
 
         public Radnik(OleDbDataReader reader)
         {
+            AdresaRepo adresaRepo = new AdresaRepo();
             ID = reader[0].ToString();
             Ime = reader[1].ToString();
             Prezime = reader[2].ToString();
@@ -47,7 +49,7 @@ namespace NaplatneRampeSrbije.Models
             KorisnickoIme = reader[5].ToString();
             Lozinka = reader[6].ToString();
             RadnoMesto = (RadnoMesto)reader[7];
-            AdresaID = reader[8].ToString();
+            Adresa = adresaRepo.GetAdresaById(reader[8].ToString());
             MestoRadaID = reader[9].ToString();
         }
     }

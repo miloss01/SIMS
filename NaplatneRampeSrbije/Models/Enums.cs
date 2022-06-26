@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    enum RadnoMesto
+    public enum RadnoMesto
     {
         ReferentNaplate,
         SefNaplatneStanice,
@@ -39,7 +39,7 @@ namespace NaplatneRampeSrbije.Models
         Dolar
     }
 
-    enum Pol
+    public enum Pol
     {
         Muski,
         Zenski

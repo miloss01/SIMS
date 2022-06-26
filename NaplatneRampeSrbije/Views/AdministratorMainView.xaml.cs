@@ -22,10 +22,16 @@ namespace NaplatneRampeSrbije.Views
             InitializeComponent();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void naplatnoMestoCRUD_Click(object sender, RoutedEventArgs e)
         {
             NaplatnoMestoCRUDView naplatnoMestoCRUDView = new NaplatnoMestoCRUDView();
             naplatnoMestoCRUDView.Show();
+        }
+
+        private void korisnikCreate_Click(object sender, RoutedEventArgs e)
+        {
+            KorisnikCRUDView korisnikCRUDView = new KorisnikCRUDView();
+            korisnikCRUDView.Show();
         }
     }
 }

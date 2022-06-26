@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    class Mesto
+    public class Mesto
     {
         public string ID { get; set; }
         public string Naziv { get; set; }

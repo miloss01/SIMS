@@ -50,6 +50,7 @@ namespace NaplatneRampeSrbije
                 {
                     AdministratorMainView administratorMainView = new AdministratorMainView();
                     administratorMainView.Show();
+                    Close();
                 }
             }
             else

@@ -10,7 +10,12 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_CRUD">
-                    <MenuItem Header="_Naplatno mesto CRUD" Click="MenuItem_Click"/>
+                    <MenuItem Header="_Naplatno mesto CRUD"
+                              x:Name="naplatnoMestoCRUD"
+                              Click="naplatnoMestoCRUD_Click" />
+                    <MenuItem Header="_Korisnik CRUD"
+                              x:Name="korisnikCRUD" 
+                              Click="korisnikCreate_Click" />
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>

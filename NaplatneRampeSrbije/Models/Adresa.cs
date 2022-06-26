@@ -6,9 +6,8 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    class Adresa
+    public class Adresa
     {
-        private MestoRepo mestoRepo = new MestoRepo();
         public string ID { get; set; }
         public string Ulica { get; set; }
         public string PostanskiBroj { get; set; }
@@ -29,10 +28,16 @@ namespace NaplatneRampeSrbije.Models
 
         public Adresa(OleDbDataReader reader)
         {
+            MestoRepo mestoRepo = new MestoRepo();
             ID = reader[0].ToString();
             Ulica = reader[1].ToString();
             PostanskiBroj = reader[2].ToString();
             Mesto = mestoRepo.GetMestoById(reader[3].ToString());
+        }
+
+        public override string ToString()
+        {
+            return Ulica + " " + PostanskiBroj;
         }
     }
 }

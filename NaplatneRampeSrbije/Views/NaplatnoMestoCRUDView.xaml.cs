@@ -26,7 +26,6 @@ namespace NaplatneRampeSrbije.Views
             public bool ElNaplata { get; set; }
         }
 
-
         private NaplatnoMestoCRUDController naplatnoMestoCRUDController;
 
         public NaplatnoMestoCRUDView()
@@ -86,7 +85,7 @@ namespace NaplatneRampeSrbije.Views
         {
             string id = textbox.Text;
             string naplatnaStanicaId = combobox.SelectedValue == null ? "" : combobox.SelectedValue.ToString();
-            bool elNaplata = (bool) checkbox.IsChecked;
+            bool elNaplata = (bool)checkbox.IsChecked;
 
             bool success = naplatnoMestoCRUDController.SaveNaplatnoMesto(id, naplatnaStanicaId, elNaplata);
 
