@@ -57,6 +57,19 @@ namespace NaplatneRampeSrbije
                     menadzerMainView.Show();
                 }
 
+                // ovaj else if mozes da izbrises sto se mene tice
+                else if (Globals.ulogovaniRadnik.RadnoMesto == RadnoMesto.ReferentNaplate)
+                {
+                    // kada budes otvarao moj prozor za generisanje racuna moras da prosledis
+                    // 1. vrstu vozila: VrstaVozila
+                    // 2. valutu: Valuta
+                    // 3. naplatno mesto ulazak id: string
+                    // 4. vreme izlaska: DateTime
+                    // za naplatno mesto ulaska pazi da ne bude sa iste naplatne stanice na kojoj radi referent jer ne postoji ta deonica u bazi pa ce da baca gresku
+                    GenerisanjeRacunaView generisanjeRacunaView = new GenerisanjeRacunaView(VrstaVozila.Automobil, Valuta.Dinar, "5", new DateTime());
+                    generisanjeRacunaView.Show();
+                }
+
             }
             else
             {

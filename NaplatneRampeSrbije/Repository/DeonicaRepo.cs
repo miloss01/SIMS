@@ -6,39 +6,43 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Repository
 {
-    class RacunRepo
+    class DeonicaRepo
     {
-        public List<Racun> GetAllRacun()
+        NaplatnoMestoRepo naplatnoMestoRepo = new NaplatnoMestoRepo();
+        public Deonica GetDeonicaById(string id)
         {
             using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
             {
-                string query = $"SELECT * FROM racun";
+                string query = $"SELECT * FROM deonica WHERE deonica_id = '{id}'";
                 OleDbCommand command = new OleDbCommand(query, connection);
                 connection.Open();
                 OleDbDataReader reader = command.ExecuteReader();
-                List<Racun> racuni = new List<Racun>();
+                Deonica d = null;
                 while (reader.Read())
                 {
-                    racuni.Add(new Racun(reader));
+                    d = new Deonica(reader);
                 }
                 reader.Close();
-                return racuni;
+                return d;
             }
         }
 
-        public bool SaveRacun(Racun r)
+        public Deonica GetDeonicaByUlazakIIzlazak(string ulazakId, string izlazakId)
         {
+
             using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
             {
-                string vreme = r.VremeIzlaska.ToString(Globals.formatDatumVreme);
-                int vozilo = ((int)r.VrstaVozila);
-                int valuta = ((int)r.Valuta);
-    
-                string query = $"INSERT INTO racun (racun_id, vozilo, cena, valuta, vreme_izlaska, izlazak_naplatno_mesto_id, ulazak_naplatno_mesto_id) VALUES ('{r.ID}', '{vozilo}', {r.Cena}, {valuta}, '{vreme}', '{r.NaplatnoMesto.ID}', '{r.MestoUlaska.ID}')";
+                string query = $"SELECT * FROM deonica WHERE pocetak_naplatna_stanica_id='{ulazakId}' AND kraj_naplatna_stanica_id='{izlazakId}'";
                 OleDbCommand command = new OleDbCommand(query, connection);
                 connection.Open();
-                command.ExecuteNonQuery();
-                return true;
+                OleDbDataReader reader = command.ExecuteReader();
+                Deonica d = null;
+                while (reader.Read())
+                {
+                    d = new Deonica(reader);
+                }
+                reader.Close();
+                return d;
             }
         }
     }
