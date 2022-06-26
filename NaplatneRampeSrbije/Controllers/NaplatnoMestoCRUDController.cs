@@ -23,7 +23,7 @@ namespace NaplatneRampeSrbije.Controllers
 
         public bool SaveNaplatnoMesto(string id, string naplatnaStanicaID, bool elNaplata)
         {
-            if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(naplatnaStanicaID))
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(naplatnaStanicaID))
                 return false;
 
             NaplatnoMesto naplatnoMesto = new NaplatnoMesto(id, naplatnaStanicaRepo.GetNaplatnaStanicaById(naplatnaStanicaID), elNaplata);
@@ -34,7 +34,7 @@ namespace NaplatneRampeSrbije.Controllers
 
         public bool EditNaplatnoMesto(string id, string naplatnaStanicaID, bool elNaplata)
         {
-            if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(naplatnaStanicaID))
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(naplatnaStanicaID))
                 return false;
 
             NaplatnoMesto naplatnoMesto = new NaplatnoMesto(id, naplatnaStanicaRepo.GetNaplatnaStanicaById(naplatnaStanicaID), elNaplata);
@@ -45,7 +45,7 @@ namespace NaplatneRampeSrbije.Controllers
 
         public bool DeleteNaplatnoMesto(string id)
         {
-            if (String.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id))
                 return false;
 
             naplatnoMestoRepo.DeleteNaplatnoMesto(id);
