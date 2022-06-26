@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NaplatneRampeSrbije.Repository;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Text;
@@ -7,26 +8,27 @@ namespace NaplatneRampeSrbije.Models
 {
     class Racun
     {
+        private NaplatnoMestoRepo naplatnoMestoRepo = new NaplatnoMestoRepo();
         public string ID { get; set; }
         public VrstaVozila VrstaVozila { get; set; }
         public double Cena { get; set; }
         public Valuta Valuta { get; set; }
         public DateTime VremeIzlaska { get; set; }
-        public string NaplatnoMestoID { get; set; }
+        public NaplatnoMesto NaplatnoMesto { get; set; }
 
         public Racun()
         {
 
         }
 
-        public Racun(string id, VrstaVozila vrstaVozila, double cena, Valuta valuta, DateTime vremeIzlaska, string naplatnoMestoID)
+        public Racun(string id, VrstaVozila vrstaVozila, double cena, Valuta valuta, DateTime vremeIzlaska, NaplatnoMesto naplatnoMesto)
         {
             ID = id;
             VrstaVozila = vrstaVozila;
             Cena = cena;
             Valuta = valuta;
             VremeIzlaska = vremeIzlaska;
-            NaplatnoMestoID = naplatnoMestoID;
+            NaplatnoMesto = naplatnoMesto;
         }
 
         public Racun(OleDbDataReader reader)
@@ -36,8 +38,7 @@ namespace NaplatneRampeSrbije.Models
             Cena = Convert.ToDouble(reader[2]);
             Valuta = (Valuta)reader[3];
             VremeIzlaska = DateTime.Parse(reader[4].ToString());
-            NaplatnoMestoID = reader[5].ToString();
-
+            NaplatnoMesto = naplatnoMestoRepo.GetNaplatnoMestoById(reader[5].ToString());
         }
     }
 }

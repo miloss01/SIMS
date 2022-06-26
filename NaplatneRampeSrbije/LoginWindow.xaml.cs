@@ -51,6 +51,11 @@ namespace NaplatneRampeSrbije
                     AdministratorMainView administratorMainView = new AdministratorMainView();
                     administratorMainView.Show();
                 }
+                else if (Globals.ulogovaniRadnik.RadnoMesto == RadnoMesto.Menadzer)
+                {
+                    MenadzerMainView menadzerMainView = new MenadzerMainView();
+                    menadzerMainView.Show();
+                }
 
             }
             else
