@@ -15,13 +15,14 @@ namespace NaplatneRampeSrbije.Models
         public Valuta Valuta { get; set; }
         public DateTime VremeIzlaska { get; set; }
         public NaplatnoMesto NaplatnoMesto { get; set; }
+        public NaplatnoMesto MestoUlaska { get; set; }
 
         public Racun()
         {
 
         }
 
-        public Racun(string id, VrstaVozila vrstaVozila, double cena, Valuta valuta, DateTime vremeIzlaska, NaplatnoMesto naplatnoMesto)
+        public Racun(string id, VrstaVozila vrstaVozila, double cena, Valuta valuta, DateTime vremeIzlaska, NaplatnoMesto naplatnoMesto, NaplatnoMesto mestoUlaska)
         {
             ID = id;
             VrstaVozila = vrstaVozila;
@@ -29,6 +30,7 @@ namespace NaplatneRampeSrbije.Models
             Valuta = valuta;
             VremeIzlaska = vremeIzlaska;
             NaplatnoMesto = naplatnoMesto;
+            MestoUlaska = mestoUlaska;
         }
 
         public Racun(OleDbDataReader reader)
@@ -39,6 +41,7 @@ namespace NaplatneRampeSrbije.Models
             Valuta = (Valuta)reader[3];
             VremeIzlaska = DateTime.Parse(reader[4].ToString());
             NaplatnoMesto = naplatnoMestoRepo.GetNaplatnoMestoById(reader[5].ToString());
+            MestoUlaska = naplatnoMestoRepo.GetNaplatnoMestoById(reader[6].ToString());
         }
     }
 }
