@@ -1,5 +1,6 @@
 ﻿using NaplatneRampeSrbije.Controllers;
 using NaplatneRampeSrbije.Models;
+using NaplatneRampeSrbije.Views;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -26,7 +27,7 @@ namespace NaplatneRampeSrbije
         {
             InitializeComponent();
             _loginController = new LoginController();
-            using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
+           /* using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
             {
                 string query = "SELECT * FROM racun";
                 OleDbCommand command = new OleDbCommand(query, connection);
@@ -38,18 +39,23 @@ namespace NaplatneRampeSrbije
                     _ = MessageBox.Show(c.VremeIzlaska.ToString());
                 }
                 reader.Close();
-            }
+            }*/
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             if (_loginController.Login(usernameTextBox.Text, passwordBox.Password))
             {
-                _ = MessageBox.Show(Globals.ulogovaniRadnik.Ime + " " + Globals.ulogovaniRadnik.Prezime);
+                if (Globals.ulogovaniRadnik.RadnoMesto == RadnoMesto.Admininstrator)
+                {
+                    AdministratorMainView administratorMainView = new AdministratorMainView();
+                    administratorMainView.Show();
+                }
+
             }
             else
             {
-                _ = MessageBox.Show("Nisam nasa radnika");
+                _ = MessageBox.Show("Nisam nasao radnika");
             }
         }
     }
