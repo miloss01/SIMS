@@ -25,14 +25,14 @@ namespace NaplatneRampeSrbije.Models
         Kamera
     }
 
-    enum VrstaVozila
+    public enum VrstaVozila
     {
         Automobil,
         Kamion,
         Autobus
     }
 
-    enum Valuta
+    public enum Valuta
     {
         Dinar,
         Evro,

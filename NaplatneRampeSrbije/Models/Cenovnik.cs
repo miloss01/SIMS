@@ -10,7 +10,7 @@ namespace NaplatneRampeSrbije.Models
         public string ID;
         public DateTime DatumPocetka { get; set; }
         public DateTime DatumKraja { get; set; }
-        public List<string> StavkeID { get; set; }
+        public List<StavkaCenovnika> Stavke { get; set; }
 
         public Cenovnik()
         {
@@ -21,7 +21,7 @@ namespace NaplatneRampeSrbije.Models
         {
             DatumPocetka = datumPocetka;
             DatumKraja = datumKraja;
-            StavkeID = new List<string>();
+            Stavke = new List<StavkaCenovnika>();
         }
 
         public Cenovnik(OleDbDataReader reader)
@@ -29,17 +29,17 @@ namespace NaplatneRampeSrbije.Models
             ID = reader[0].ToString();
             DatumPocetka = DateTime.Parse(reader[1].ToString());
             DatumKraja = reader[2].ToString() == "null" ? new DateTime() : DateTime.Parse(reader[2].ToString());
-            StavkeID = new List<string>();
+            Stavke = new List<StavkaCenovnika>();
             using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
             {
-                string query = $"SELECT stavka_cenovnika_id FROM stavka_cenovnika WHERE cenovnik_id = '{ID}'";
+                string query = $"SELECT * FROM stavka_cenovnika WHERE cenovnik_id = '{ID}'";
                 OleDbCommand command = new OleDbCommand(query, connection);
 
                 connection.Open();
                 OleDbDataReader readerStavki = command.ExecuteReader();
                 while (readerStavki.Read())
                 {
-                    StavkeID.Add(readerStavki[0].ToString());
+                    Stavke.Add(new StavkaCenovnika(readerStavki));
                 }
                 readerStavki.Close();
             }

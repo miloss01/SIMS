@@ -8,6 +8,8 @@ namespace NaplatneRampeSrbije.Models
 {
     public class Radnik
     {
+        private NaplatnoMestoRepo naplatnoMestoRepo = new NaplatnoMestoRepo();
+        private NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
         public string ID { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
@@ -16,15 +18,16 @@ namespace NaplatneRampeSrbije.Models
         public RadnoMesto RadnoMesto { get; set; }
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
+        public NaplatnoMesto NaplatnoMesto { get; set; }
+        public NaplatnaStanica NaplatnaStanica { get; set; }
         public Adresa Adresa { get; set; }
-        public string MestoRadaID { get; set; }
 
         public Radnik()
         {
 
         }
 
-        public Radnik(string id, string ime, string prezime, Pol pol, string telefon, RadnoMesto radnoMesto, string korisnickoIme, string lozinka, Adresa adresa, string mestoRadaID)
+        public Radnik(string id, string ime, string prezime, Pol pol, string telefon, RadnoMesto radnoMesto, string korisnickoIme, string lozinka, Adresa adresa, NaplatnoMesto naplatnoMesto, NaplatnaStanica naplatnaStanica)
         {
             ID = id;
             Ime = ime;
@@ -34,8 +37,9 @@ namespace NaplatneRampeSrbije.Models
             RadnoMesto = radnoMesto;
             KorisnickoIme = korisnickoIme;
             Lozinka = lozinka;
+            NaplatnoMesto = naplatnoMesto;
+            NaplatnaStanica = naplatnaStanica;
             Adresa = adresa;
-            MestoRadaID = mestoRadaID;
         }
 
         public Radnik(OleDbDataReader reader)
@@ -49,8 +53,22 @@ namespace NaplatneRampeSrbije.Models
             KorisnickoIme = reader[5].ToString();
             Lozinka = reader[6].ToString();
             RadnoMesto = (RadnoMesto)reader[7];
+            if (RadnoMesto == RadnoMesto.ReferentNaplate)
+            {
+                NaplatnoMesto = naplatnoMestoRepo.GetNaplatnoMestoById(reader[9].ToString());
+                NaplatnaStanica = null;
+            }
+            else if (RadnoMesto == RadnoMesto.SefNaplatneStanice)
+            {
+                NaplatnoMesto = null;
+                NaplatnaStanica = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[9].ToString());
+            }
+            else
+            {
+                NaplatnoMesto = null;
+                NaplatnaStanica = null;
+            }
             Adresa = adresaRepo.GetAdresaById(reader[8].ToString());
-            MestoRadaID = reader[9].ToString();
         }
     }
 }

@@ -1,0 +1,19 @@
+﻿<Window x:Class="NaplatneRampeSrbije.Views.StatistikaValuteView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
+        mc:Ignorable="d"
+        Title="StatistikaValuteView" Height="450" Width="800">
+    <Grid Loaded="Grid_Loaded">
+        <Label Content="Naplatna Stanica" HorizontalAlignment="Left" Margin="80,88,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="combobox1" HorizontalAlignment="Left" Margin="85,131,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Valuta" HorizontalAlignment="Left" Margin="273,88,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="combobox2" HorizontalAlignment="Left" Margin="280,131,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label1" Content="Broj placanja: " HorizontalAlignment="Left" Margin="80,199,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Ukupna suma: " HorizontalAlignment="Left" Margin="80,246,0,0" VerticalAlignment="Top"/>
+        <Button Content="Generisi izvestaj" HorizontalAlignment="Left" Margin="467,131,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click"/>
+
+    </Grid>
+</Window>

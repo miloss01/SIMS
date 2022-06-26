@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NaplatneRampeSrbije.Repository;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Text;
@@ -7,30 +8,31 @@ namespace NaplatneRampeSrbije.Models
 {
     class Deonica
     {
+        private NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
         public string ID { get; set; }
         public int Duzina { get; set; }
-        public string PocetnaNaplatnaStanicaID { get; set; }
-        public string KrajnjaNaplatnaStanicaID { get; set; }
+        public NaplatnaStanica PocetnaNaplatnaStanicaID { get; set; }
+        public NaplatnaStanica KrajnjaNaplatnaStanicaID { get; set; }
 
         public Deonica()
         {
 
         }
 
-        public Deonica(string id, int duzina, string pocetnaNaplatnaStanicaID, string krajnjaNaplatnaStanicaID)
+        public Deonica(string id, int duzina, NaplatnaStanica pocetnaNaplatnaStanica, NaplatnaStanica krajnjaNaplatnaStanica)
         {
             ID = id;
             Duzina = duzina;
-            PocetnaNaplatnaStanicaID = pocetnaNaplatnaStanicaID;
-            KrajnjaNaplatnaStanicaID = krajnjaNaplatnaStanicaID;
+            PocetnaNaplatnaStanicaID = pocetnaNaplatnaStanica;
+            KrajnjaNaplatnaStanicaID = krajnjaNaplatnaStanica;
         }
 
         public Deonica(OleDbDataReader reader)
         {
             ID = reader[0].ToString();
             Duzina = Convert.ToInt32(reader[1]);
-            PocetnaNaplatnaStanicaID = reader[2].ToString();
-            KrajnjaNaplatnaStanicaID = reader[3].ToString();
+            PocetnaNaplatnaStanicaID = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[2].ToString());
+            KrajnjaNaplatnaStanicaID = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[3].ToString());
         }
     }
 }

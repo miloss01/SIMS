@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    class NaplatnaStanica
+    public class NaplatnaStanica
     {
         private AdresaRepo adresaRepo = new AdresaRepo();
         public string ID { get; set; }
