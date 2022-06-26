@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NaplatneRampeSrbije.Repository;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Text;
@@ -7,8 +8,9 @@ namespace NaplatneRampeSrbije.Models
 {
     class NaplatnoMesto
     {
+        private NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
         public string ID { get; set; }
-        public string RedniBroj { get; set; }
+        public NaplatnaStanica NaplatnaStanica { get; set; }
         public bool ElNaplata { get; set; }
 
         public NaplatnoMesto()
@@ -16,16 +18,17 @@ namespace NaplatneRampeSrbije.Models
 
         }
 
-        public NaplatnoMesto(string redniBroj, bool elNaplata)
+        public NaplatnoMesto(string id, NaplatnaStanica naplatnaStanica, bool elNaplata)
         {
-            RedniBroj = redniBroj;
+            ID = id;
+            NaplatnaStanica = naplatnaStanica;
             ElNaplata = elNaplata;
         }
 
         public NaplatnoMesto(OleDbDataReader reader)
         {
             ID = reader[0].ToString();
-            RedniBroj = reader[1].ToString();
+            NaplatnaStanica = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[1].ToString());
             ElNaplata = Convert.ToBoolean(reader[2]);
         }
     }
