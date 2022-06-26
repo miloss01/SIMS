@@ -105,7 +105,7 @@ namespace NaplatneRampeSrbije.Repository
         {
             using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
             {
-                string query = $"DELETE FROM radnik WHERE radnik_id = '{id}'";
+                string query = $"DELETE FROM radnik WHERE radnik_iud = '{id}'";
                 OleDbCommand command = new OleDbCommand(query, connection);
                 connection.Open();
                 command.ExecuteNonQuery();
