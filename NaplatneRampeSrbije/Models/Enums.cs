@@ -29,7 +29,8 @@ namespace NaplatneRampeSrbije.Models
     {
         Automobil,
         Kamion,
-        Autobus
+        Autobus,
+        None
     }
 
     public enum Valuta

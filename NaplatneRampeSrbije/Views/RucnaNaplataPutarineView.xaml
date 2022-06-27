@@ -35,9 +35,9 @@
                 <TextBlock Text="Mesto ulaska ID"
                            Grid.Row="0" 
                            FontSize="18"/>
-                <TextBox Grid.Row="1" 
-                         MinWidth="200"
-                         x:Name="mestoUlaskaIDTextBox" />
+                <ComboBox Grid.Row="1" 
+                          MinWidth="200"
+                          x:Name="mestoUlaskaIDComboBox" />
             </Grid>
             <Grid Margin="10">
                 <Grid.RowDefinitions>

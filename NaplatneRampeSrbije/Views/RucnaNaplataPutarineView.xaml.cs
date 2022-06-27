@@ -20,14 +20,27 @@ namespace NaplatneRampeSrbije.Views
     /// </summary>
     public partial class RucnaNaplataPutarineView : Window
     {
-        private readonly RucnaNaplataPutarineController _rucnaNaplataPutarineController;
+        private readonly NaplatnoMestoController _naplatnoMestoController;
 
         public RucnaNaplataPutarineView()
         {
             InitializeComponent();
+            _naplatnoMestoController = new NaplatnoMestoController();
+            PopuniNaplatnaMestaIdComboBox();
             PopuniVrstaVozilaComboBox();
             PopuniValutaComboBox();
-            _rucnaNaplataPutarineController = new RucnaNaplataPutarineController();
+        }
+
+        private void PopuniNaplatnaMestaIdComboBox()
+        {
+            foreach (NaplatnoMesto naplatnoMesto in _naplatnoMestoController.VratiSveNaplatneStanice())
+            {
+                mestoUlaskaIDComboBox.Items.Add(naplatnoMesto.ID);
+                if (mestoUlaskaIDComboBox.SelectedItem == null)
+                {
+                    mestoUlaskaIDComboBox.SelectedItem = naplatnoMesto.ID;
+                }
+            }
         }
 
         private void PopuniVrstaVozilaComboBox()
@@ -48,12 +61,12 @@ namespace NaplatneRampeSrbije.Views
 
         private void generisanjeRacunaButton_Click(object sender, RoutedEventArgs e)
         {
-            string mestoUlaskaID = mestoUlaskaIDTextBox.Text;
+            string mestoUlaskaID = mestoUlaskaIDComboBox.SelectedItem.ToString();
             VrstaVozila vrstaVozila = (VrstaVozila)vrstaVozilaComboBox.SelectedItem;
             Valuta valuta = (Valuta)valutaComboBox.SelectedItem;
             DateTime vremeIzlaska = DateTime.Now;
 
-            if (!_rucnaNaplataPutarineController.IstaNaplatnaStanica(mestoUlaskaID))
+            if (_naplatnoMestoController.IstaNaplatnaStanica(mestoUlaskaID, Globals.ulogovaniRadnik.NaplatnoMesto.ID))
             {
                 MessageBox.Show("Nije validan ID mesta ulaska");
                 return;
@@ -72,7 +85,7 @@ namespace NaplatneRampeSrbije.Views
 
         private void kontrolaRampeButton_Click(object sender, RoutedEventArgs e)
         {
-            mestoUlaskaIDTextBox.IsEnabled = !mestoUlaskaIDTextBox.IsEnabled;
+            mestoUlaskaIDComboBox.IsEnabled = !mestoUlaskaIDComboBox.IsEnabled;
             vrstaVozilaComboBox.IsEnabled = !vrstaVozilaComboBox.IsEnabled;
             valutaComboBox.IsEnabled = !valutaComboBox.IsEnabled;
             rampaJeBlokiranaCheckBox.IsChecked = !rampaJeBlokiranaCheckBox.IsChecked;

@@ -23,10 +23,16 @@ namespace NaplatneRampeSrbije.Views
             InitializeComponent();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void statistikaValuteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             StatistikaValuteView statistikaValuteView = new StatistikaValuteView();
             statistikaValuteView.Show();
+        }
+
+        private void statistikaProlaskaVozilaMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            StatistikaProlaskaVozilaView statistikaProlaskaVozila = new StatistikaProlaskaVozilaView();
+            statistikaProlaskaVozila.Show();
         }
 
         private void WindowClosing(object sender, CancelEventArgs e)
