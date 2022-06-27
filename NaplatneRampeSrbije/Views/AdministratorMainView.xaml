@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
         mc:Ignorable="d"
-        Title="AdministratorMainView" Height="450" Width="800">
+        Title="AdministratorMainView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Closing="WindowClosing"
+        ResizeMode="NoResize">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_CRUD">
-                    <MenuItem Header="_Naplatno mesto CRUD" Click="MenuItem_Click"/>
+                    <MenuItem Header="_Naplatno mesto CRUD"
+                              x:Name="naplatnoMestoCRUD"
+                              Click="naplatnoMestoCRUD_Click" />
+                    <MenuItem Header="_Korisnik CRUD"
+                              x:Name="korisnikCRUD" 
+                              Click="korisnikCreate_Click" />
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>

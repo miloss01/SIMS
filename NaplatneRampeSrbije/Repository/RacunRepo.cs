@@ -34,7 +34,7 @@ namespace NaplatneRampeSrbije.Repository
                 int vozilo = ((int)r.VrstaVozila);
                 int valuta = ((int)r.Valuta);
     
-                string query = $"INSERT INTO racun (racun_id, vozilo, cena, valuta, vreme_izlaska, izlazak_naplatno_mesto_id, ulazak_naplatno_mesto_id) VALUES ('{r.ID}', '{vozilo}', {r.Cena}, {valuta}, '{vreme}', '{r.NaplatnoMesto.ID}', '{r.MestoUlaska.ID}')";
+                string query = $"INSERT INTO racun (racun_id, vozilo, cena, valuta, vreme_izlaska, izlazak_naplatno_mesto_id, ulazak_naplatno_mesto_id) VALUES ('{r.ID}', '{vozilo}', {r.Cena}, {valuta}, '{vreme}', '{r.MestoIzlaska.ID}', '{r.MestoUlaska.ID}')";
                 OleDbCommand command = new OleDbCommand(query, connection);
                 connection.Open();
                 command.ExecuteNonQuery();

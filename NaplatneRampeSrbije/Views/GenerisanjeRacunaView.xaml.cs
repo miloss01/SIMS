@@ -2,6 +2,7 @@
 using NaplatneRampeSrbije.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.OleDb;
 using System.Text;
 using System.Windows;
@@ -82,7 +83,10 @@ namespace NaplatneRampeSrbije.Views
             bool success = racunController.SaveRacun(racunId, vozilo, cena, valuta, vremeIzlaska, izlazakMestoId, ulazakMestoId);
 
             if (success)
+            {
                 MessageBox.Show("Uspesno placanje.");
+                Close();
+            }
             else
                 MessageBox.Show("Neuspesno placanje.");
         }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    class NaplatnoMesto
+    public class NaplatnoMesto
     {
         private NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
         public string ID { get; set; }
@@ -30,6 +30,11 @@ namespace NaplatneRampeSrbije.Models
             ID = reader[0].ToString();
             NaplatnaStanica = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[1].ToString());
             ElNaplata = Convert.ToBoolean(reader[2]);
+        }
+
+        public override string ToString()
+        {
+            return ID;
         }
     }
 }

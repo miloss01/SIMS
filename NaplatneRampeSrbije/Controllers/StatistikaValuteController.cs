@@ -22,7 +22,7 @@ namespace NaplatneRampeSrbije.Controllers
             int brojPlacanja = 0;
 
             foreach (Racun racun in racuni)
-                if (racun.NaplatnoMesto.NaplatnaStanica.ID == id && racun.Valuta == valuta)
+                if (racun.MestoIzlaska.NaplatnaStanica.ID == id && racun.Valuta == valuta)
                     brojPlacanja += 1;
 
             return brojPlacanja;
@@ -34,7 +34,7 @@ namespace NaplatneRampeSrbije.Controllers
             double suma = 0;
 
             foreach (Racun racun in racuni)
-                if (racun.NaplatnoMesto.NaplatnaStanica.ID == id && racun.Valuta == valuta)
+                if (racun.MestoIzlaska.NaplatnaStanica.ID == id && racun.Valuta == valuta)
                     suma += racun.Cena;
 
             return suma;

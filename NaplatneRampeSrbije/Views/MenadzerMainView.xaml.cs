@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,10 +23,23 @@ namespace NaplatneRampeSrbije.Views
             InitializeComponent();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void statistikaValuteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             StatistikaValuteView statistikaValuteView = new StatistikaValuteView();
             statistikaValuteView.Show();
+        }
+
+        private void statistikaProlaskaVozilaMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            StatistikaProlaskaVozilaView statistikaProlaskaVozila = new StatistikaProlaskaVozilaView();
+            statistikaProlaskaVozila.Show();
+        }
+
+        private void WindowClosing(object sender, CancelEventArgs e)
+        {
+            Globals.ulogovaniRadnik = null;
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    enum RadnoMesto
+    public enum RadnoMesto
     {
         ReferentNaplate,
         SefNaplatneStanice,
@@ -12,13 +12,13 @@ namespace NaplatneRampeSrbije.Models
         Admininstrator
     }
 
-    enum VrstaKvara
+    public enum VrstaKvara
     {
         FizickoOstecenje,
         ElektronskoOstecenje
     }
 
-    enum Oprema
+    public enum Oprema
     {
         Rampa,
         Semafor,
@@ -29,7 +29,8 @@ namespace NaplatneRampeSrbije.Models
     {
         Automobil,
         Kamion,
-        Autobus
+        Autobus,
+        None
     }
 
     public enum Valuta
@@ -39,7 +40,7 @@ namespace NaplatneRampeSrbije.Models
         Dolar
     }
 
-    enum Pol
+    public enum Pol
     {
         Muski,
         Zenski

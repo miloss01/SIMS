@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    class NaplatnaStanica
+    public class NaplatnaStanica
     {
         private AdresaRepo adresaRepo = new AdresaRepo();
         public string ID { get; set; }
@@ -27,6 +27,11 @@ namespace NaplatneRampeSrbije.Models
         {
             ID = reader[0].ToString();
             Adresa = adresaRepo.GetAdresaById(reader[1].ToString());
+        }
+
+        public override string ToString()
+        {
+            return ID;
         }
     }
 }

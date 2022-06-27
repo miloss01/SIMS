@@ -14,7 +14,7 @@ namespace NaplatneRampeSrbije.Models
         public double Cena { get; set; }
         public Valuta Valuta { get; set; }
         public DateTime VremeIzlaska { get; set; }
-        public NaplatnoMesto NaplatnoMesto { get; set; }
+        public NaplatnoMesto MestoIzlaska { get; set; }
         public NaplatnoMesto MestoUlaska { get; set; }
 
         public Racun()
@@ -29,7 +29,7 @@ namespace NaplatneRampeSrbije.Models
             Cena = cena;
             Valuta = valuta;
             VremeIzlaska = vremeIzlaska;
-            NaplatnoMesto = naplatnoMesto;
+            MestoIzlaska = naplatnoMesto;
             MestoUlaska = mestoUlaska;
         }
 
@@ -40,7 +40,7 @@ namespace NaplatneRampeSrbije.Models
             Cena = Convert.ToDouble(reader[2]);
             Valuta = (Valuta)reader[3];
             VremeIzlaska = DateTime.Parse(reader[4].ToString());
-            NaplatnoMesto = naplatnoMestoRepo.GetNaplatnoMestoById(reader[5].ToString());
+            MestoIzlaska = naplatnoMestoRepo.GetNaplatnoMestoById(reader[5].ToString());
             MestoUlaska = naplatnoMestoRepo.GetNaplatnoMestoById(reader[6].ToString());
         }
     }

@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
         mc:Ignorable="d"
-        Title="StatistikaValuteView" Height="450" Width="800">
+        Title="StatistikaValuteView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid Loaded="Grid_Loaded">
         <Label Content="Naplatna Stanica" HorizontalAlignment="Left" Margin="80,88,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="combobox1" HorizontalAlignment="Left" Margin="85,131,0,0" VerticalAlignment="Top" Width="120"/>

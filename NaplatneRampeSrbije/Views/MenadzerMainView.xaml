@@ -5,12 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
         mc:Ignorable="d"
-        Title="MenadzerMainView" Height="450" Width="800">
+        Title="MenadzerMainView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Closing="WindowClosing">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Izvestaji">
-                    <MenuItem Header="_Statistika o valuti na naplatnim stanicama" Click="MenuItem_Click"/>
+                    <MenuItem Header="_Statistika o valuti na naplatnim stanicama" 
+                              Click="statistikaValuteMenuItem_Click"/>
+                    <MenuItem Header="_Statistika o prolasku vozila kroz naplatna mesta" 
+                              Click="statistikaProlaskaVozilaMenuItem_Click"/>
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>

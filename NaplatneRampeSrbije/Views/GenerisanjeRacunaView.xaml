@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
         mc:Ignorable="d"
-        Title="GenerisanjeRacunaView" Height="450" Width="800">
+        Title="GenerisanjeRacunaView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid Loaded="Grid_Loaded">
         <Label Content="Mesto ulaska ID" HorizontalAlignment="Left" Margin="56,66,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtUlazakId"  HorizontalAlignment="Left" Margin="56,99,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
