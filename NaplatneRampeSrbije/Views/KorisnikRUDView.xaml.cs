@@ -44,6 +44,7 @@ namespace NaplatneRampeSrbije.Views
             DataGridTextColumn col8 = new DataGridTextColumn();
             DataGridTextColumn col9 = new DataGridTextColumn();
             DataGridTextColumn col10 = new DataGridTextColumn();
+            DataGridTextColumn col11 = new DataGridTextColumn();
             radniciDataGrid.Columns.Add(col1);
             radniciDataGrid.Columns.Add(col2);
             radniciDataGrid.Columns.Add(col3);
@@ -54,6 +55,7 @@ namespace NaplatneRampeSrbije.Views
             radniciDataGrid.Columns.Add(col8);
             radniciDataGrid.Columns.Add(col9);
             radniciDataGrid.Columns.Add(col10);
+            radniciDataGrid.Columns.Add(col11);
             col1.Binding = new Binding("ID");
             col2.Binding = new Binding("Ime");
             col3.Binding = new Binding("Prezime");
@@ -63,7 +65,8 @@ namespace NaplatneRampeSrbije.Views
             col7.Binding = new Binding("KorisnickoIme");
             col8.Binding = new Binding("Lozinka");
             col9.Binding = new Binding("Adresa");
-            col10.Binding = new Binding("MestoRadaID");
+            col10.Binding = new Binding("NaplatnoMesto");
+            col11.Binding = new Binding("NaplatnaStanica");
             col1.Header = "ID";
             col2.Header = "Ime";
             col3.Header = "Prezime";
@@ -73,7 +76,8 @@ namespace NaplatneRampeSrbije.Views
             col7.Header = "Korisnicko ime";
             col8.Header = "Lozinka";
             col9.Header = "Adresa";
-            col10.Header = "Mesto rada ID";
+            col10.Header = "Naplatno mesto ID";
+            col11.Header = "Naplatna stanica ID";
         }
 
         private void NapuniRadnikTabelu()

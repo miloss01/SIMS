@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,13 @@ namespace NaplatneRampeSrbije.Views
         {
             KorisnikCRUDView korisnikCRUDView = new KorisnikCRUDView();
             korisnikCRUDView.Show();
+        }
+
+        private void WindowClosing(object sender, CancelEventArgs e)
+        {
+            Globals.ulogovaniRadnik = null;
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
         }
     }
 }

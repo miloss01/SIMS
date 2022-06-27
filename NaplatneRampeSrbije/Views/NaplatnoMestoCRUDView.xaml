@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
         mc:Ignorable="d"
-        Title="NaplatnoMestoCRUDView" Height="450" Width="800">
+        Title="NaplatnoMestoCRUDView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid Loaded="Grid_Loaded">
         <DataGrid x:Name="dataGrid" Margin="0,0,0,269" SelectionChanged="dataGrid_SelectionChanged"/>
         <Label Content="ID" HorizontalAlignment="Left" Margin="40,213,0,0" VerticalAlignment="Top"/>

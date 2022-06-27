@@ -12,13 +12,13 @@ namespace NaplatneRampeSrbije.Models
         Admininstrator
     }
 
-    enum VrstaKvara
+    public enum VrstaKvara
     {
         FizickoOstecenje,
         ElektronskoOstecenje
     }
 
-    enum Oprema
+    public enum Oprema
     {
         Rampa,
         Semafor,

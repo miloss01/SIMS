@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
         mc:Ignorable="d"
         Title="KorisnikUView" Height="450" Width="800"
-        Closing="WindowClosing">
+        Closing="WindowClosing"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -166,19 +168,23 @@
                                  GroupName="radnoMesto" 
                                  Margin="5 0" 
                                  IsChecked="True"
-                                 x:Name="referentNaplateRadioButton" />
+                                 x:Name="referentNaplateRadioButton"
+                                 Checked="referentIliSefRadioButton_Checked" />
                     <RadioButton Content="Šef naplatne stanice"
                                  GroupName="radnoMesto"
                                  Margin="5 0"
-                                 x:Name="sefNaplatneStaniceRadioButton" />
+                                 x:Name="sefNaplatneStaniceRadioButton"
+                                 Checked="referentIliSefRadioButton_Checked" />
                     <RadioButton Content="Menadžer"
                                  GroupName="radnoMesto"
                                  Margin="5 0"
-                                 x:Name="menadzerRadioButton" />
+                                 x:Name="menadzerRadioButton" 
+                                 Checked="menadzerIliAdministratorRadioButton_Checked" />
                     <RadioButton Content="Administrator"
                                  GroupName="radnoMesto"
                                  Margin="5 0"
-                                 x:Name="administratorRadioButton" />
+                                 x:Name="administratorRadioButton"
+                                 Checked="menadzerIliAdministratorRadioButton_Checked" />
                 </WrapPanel>
             </Grid>
         </WrapPanel>

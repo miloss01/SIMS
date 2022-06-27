@@ -47,7 +47,17 @@ namespace NaplatneRampeSrbije.Views
             korisnickoImeTextBox.Text = r.KorisnickoIme;
             lozinkaTextBox.Text = r.Lozinka;
             adresaIdTextBox.Text = r.Adresa.ID;
-            mestoRadaIdTextBox.Text = r.MestoRadaID;
+
+            string mestoRadaId = "";
+            if (r.RadnoMesto == RadnoMesto.ReferentNaplate)
+            {
+                mestoRadaId = r.NaplatnoMesto.ID;
+            }
+            else if (r.RadnoMesto == RadnoMesto.SefNaplatneStanice)
+            {
+                mestoRadaId = r.NaplatnaStanica.ID;
+            }
+            mestoRadaIdTextBox.Text = mestoRadaId;
             switch (r.Pol)
             {
                 case Pol.Muski:
@@ -121,6 +131,16 @@ namespace NaplatneRampeSrbije.Views
             {
                 _ = MessageBox.Show("Neuspesna izmena");
             }
+        }
+
+        private void referentIliSefRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            mestoRadaIdTextBox.IsEnabled = true;
+        }
+
+        private void menadzerIliAdministratorRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            mestoRadaIdTextBox.IsEnabled = false;
         }
     }
 }

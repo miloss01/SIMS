@@ -31,5 +31,10 @@ namespace NaplatneRampeSrbije.Models
             NaplatnaStanica = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[1].ToString());
             ElNaplata = Convert.ToBoolean(reader[2]);
         }
+
+        public override string ToString()
+        {
+            return ID;
+        }
     }
 }

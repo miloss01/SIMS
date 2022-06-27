@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +27,13 @@ namespace NaplatneRampeSrbije.Views
         {
             StatistikaValuteView statistikaValuteView = new StatistikaValuteView();
             statistikaValuteView.Show();
+        }
+
+        private void WindowClosing(object sender, CancelEventArgs e)
+        {
+            Globals.ulogovaniRadnik = null;
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
         }
     }
 }

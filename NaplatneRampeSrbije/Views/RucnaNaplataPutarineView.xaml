@@ -1,0 +1,101 @@
+﻿<Window x:Class="NaplatneRampeSrbije.Views.RucnaNaplataPutarineView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
+        mc:Ignorable="d"
+        Title="RucnaNaplataPutarineView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Closing="WindowClosing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <WrapPanel Grid.Row="1"
+                   Grid.Column="1"
+                   Orientation="Horizontal">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Mesto ulaska ID"
+                           Grid.Row="0" 
+                           FontSize="18"/>
+                <TextBox Grid.Row="1" 
+                         MinWidth="200"
+                         x:Name="mestoUlaskaIDTextBox" />
+            </Grid>
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Vrsta vozila"
+                           Grid.Row="0" 
+                           FontSize="18"/>
+                <ComboBox Grid.Row="1" 
+                         MinWidth="200"
+                         x:Name="vrstaVozilaComboBox" />
+            </Grid>
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Valuta"
+                           Grid.Row="0" 
+                           FontSize="18"/>
+                <ComboBox Grid.Row="1" 
+                         MinWidth="200"
+                         x:Name="valutaComboBox" />
+            </Grid>
+        </WrapPanel>
+        <WrapPanel Grid.Row="2"
+                   Grid.Column="1"
+                   Orientation="Horizontal"
+                   Margin="0 10">
+            <Button Content="Generisanje racuna"
+                    x:Name="generisanjeRacunaButton"
+                    Margin="10"
+                    MinHeight="50"
+                    MinWidth="150" Click="generisanjeRacunaButton_Click" />
+            <Button Content="Blokiraj rampu"
+                    x:Name="blokirajRampuButton"
+                    Margin="10"
+                    MinHeight="50"
+                    MinWidth="150" 
+                    Click="kontrolaRampeButton_Click" />
+            <Button Content="Odblokiraj rampu"
+                    x:Name="odblokirajRampuButton"
+                    Margin="10"
+                    MinHeight="50"
+                    MinWidth="150"
+                    IsEnabled="False"
+                    Click="kontrolaRampeButton_Click" />
+        </WrapPanel>
+        <CheckBox Content="Rampa je blokirana"
+                  x:Name="rampaJeBlokiranaCheckBox"
+                  IsChecked="False"
+                  IsEnabled="False" 
+                  Grid.Row="3"
+                  Grid.Column="1"
+                  FontSize="16" 
+                  Margin="20"/>
+    </Grid>
+</Window>

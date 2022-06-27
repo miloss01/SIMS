@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
         mc:Ignorable="d"
         Title="KorisnikRUDView" Height="450" Width="800"
-        Closing="WindowClosing">
+        Closing="WindowClosing"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />

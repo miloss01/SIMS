@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
         mc:Ignorable="d"
-        Title="AdministratorMainView" Height="450" Width="800">
+        Title="AdministratorMainView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Closing="WindowClosing"
+        ResizeMode="NoResize">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">

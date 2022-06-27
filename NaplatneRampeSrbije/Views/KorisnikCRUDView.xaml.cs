@@ -86,5 +86,15 @@ namespace NaplatneRampeSrbije.Views
             korisnikRUDView.Show();
             Close();
         }
+
+        private void referentIliSefRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            mestoRadaIdTextBox.IsEnabled = true;
+        }
+
+        private void menadzerIliAdministratorRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            mestoRadaIdTextBox.IsEnabled = false;
+        }
     }
 }

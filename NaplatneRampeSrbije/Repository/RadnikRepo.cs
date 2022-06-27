@@ -66,7 +66,17 @@ namespace NaplatneRampeSrbije.Repository
                     }
                 }
                 reader.Close();
-                query = $"INSERT INTO radnik (radnik_id, ime, prezime, pol, telefon, korisnicko_ime, lozinka, radno_mesto, adresa_id, mesto_rada_id) VALUES ('{r.ID}', '{r.Ime}', '{r.Prezime}', {Convert.ToInt32(r.Pol)}, '{r.Telefon}', '{r.KorisnickoIme}', '{r.Lozinka}', {Convert.ToInt32(r.RadnoMesto)}, '{r.Adresa.ID}', '{r.MestoRadaID}')";
+                
+                string mestoRadaId = "";
+                if (r.RadnoMesto == RadnoMesto.ReferentNaplate)
+                {
+                    mestoRadaId = r.NaplatnoMesto.ID;
+                }
+                else if (r.RadnoMesto == RadnoMesto.SefNaplatneStanice)
+                {
+                    mestoRadaId = r.NaplatnaStanica.ID;
+                }
+                query = $"INSERT INTO radnik (radnik_id, ime, prezime, pol, telefon, korisnicko_ime, lozinka, radno_mesto, adresa_id, mesto_rada_id) VALUES ('{r.ID}', '{r.Ime}', '{r.Prezime}', {Convert.ToInt32(r.Pol)}, '{r.Telefon}', '{r.KorisnickoIme}', '{r.Lozinka}', {Convert.ToInt32(r.RadnoMesto)}, '{r.Adresa.ID}', '{mestoRadaId}')";
                 command = new OleDbCommand(query, connection);
                 command.ExecuteNonQuery();
 
@@ -93,7 +103,17 @@ namespace NaplatneRampeSrbije.Repository
                     }
                 }
                 reader.Close();
-                query = $"UPDATE radnik SET radnik_id = '{r.ID}', ime = '{r.Ime}', prezime = '{r.Prezime}', pol = {Convert.ToInt32(r.Pol)}, telefon = '{r.Telefon}', korisnicko_ime = '{r.KorisnickoIme}', lozinka = '{r.Lozinka}', radno_mesto = {Convert.ToInt32(r.RadnoMesto)}, adresa_id = '{r.Adresa.ID}', mesto_rada_id = '{r.MestoRadaID}'WHERE radnik_id = '{stariId}'";
+
+                string mestoRadaId = "";
+                if (r.RadnoMesto == RadnoMesto.ReferentNaplate)
+                {
+                    mestoRadaId = r.NaplatnoMesto.ID;
+                }
+                else if (r.RadnoMesto == RadnoMesto.SefNaplatneStanice)
+                {
+                    mestoRadaId = r.NaplatnaStanica.ID;
+                }
+                query = $"UPDATE radnik SET radnik_id = '{r.ID}', ime = '{r.Ime}', prezime = '{r.Prezime}', pol = {Convert.ToInt32(r.Pol)}, telefon = '{r.Telefon}', korisnicko_ime = '{r.KorisnickoIme}', lozinka = '{r.Lozinka}', radno_mesto = {Convert.ToInt32(r.RadnoMesto)}, adresa_id = '{r.Adresa.ID}', mesto_rada_id = '{mestoRadaId}'WHERE radnik_id = '{stariId}'";
                 command = new OleDbCommand(query, connection);
                 command.ExecuteNonQuery();
 

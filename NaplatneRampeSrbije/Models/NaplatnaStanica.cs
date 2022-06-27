@@ -28,5 +28,10 @@ namespace NaplatneRampeSrbije.Models
             ID = reader[0].ToString();
             Adresa = adresaRepo.GetAdresaById(reader[1].ToString());
         }
+
+        public override string ToString()
+        {
+            return ID;
+        }
     }
 }

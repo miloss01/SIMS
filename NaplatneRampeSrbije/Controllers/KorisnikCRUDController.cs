@@ -27,7 +27,27 @@ namespace NaplatneRampeSrbije.Controllers
                 {
                     return false;
                 }
-                Radnik r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, mestoRadaId);
+                Radnik r = null;
+                switch (radnoMesto)
+                {
+                    case RadnoMesto.ReferentNaplate:
+                        NaplatnoMestoRepo naplatnoMestoRepo = new NaplatnoMestoRepo();
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, naplatnoMestoRepo.GetNaplatnoMestoById(mestoRadaId), null);
+                        break;
+                    case RadnoMesto.SefNaplatneStanice:
+                        NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, naplatnaStanicaRepo.GetNaplatnaStanicaById(mestoRadaId));
+                        break;
+                    case RadnoMesto.Menadzer:
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, null);
+                        break;
+                    case RadnoMesto.Admininstrator:
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, null);
+                        break;
+                    default:
+                        r = new Radnik();
+                        break;
+                }
                 bool uspesno = _radnikRepo.Save(r);
                 return uspesno;
             }
@@ -46,7 +66,27 @@ namespace NaplatneRampeSrbije.Controllers
                 {
                     return false;
                 }
-                Radnik r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, mestoRadaId);
+                Radnik r = null;
+                switch (radnoMesto)
+                {
+                    case RadnoMesto.ReferentNaplate:
+                        NaplatnoMestoRepo naplatnoMestoRepo = new NaplatnoMestoRepo();
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, naplatnoMestoRepo.GetNaplatnoMestoById(mestoRadaId), null);
+                        break;
+                    case RadnoMesto.SefNaplatneStanice:
+                        NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, naplatnaStanicaRepo.GetNaplatnaStanicaById(mestoRadaId));
+                        break;
+                    case RadnoMesto.Menadzer:
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, null);
+                        break;
+                    case RadnoMesto.Admininstrator:
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, null);
+                        break;
+                    default:
+                        r = new Radnik();
+                        break;
+                }
                 bool uspesno = _radnikRepo.Izmijeni(stariId, r);
                 return uspesno;
             }
