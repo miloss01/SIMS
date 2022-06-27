@@ -1,5 +1,6 @@
 ﻿using NaplatneRampeSrbije.Controllers;
 using NaplatneRampeSrbije.Models;
+using NaplatneRampeSrbije.Views;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -26,7 +27,7 @@ namespace NaplatneRampeSrbije
         {
             InitializeComponent();
             _loginController = new LoginController();
-            using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
+           /* using (OleDbConnection connection = new OleDbConnection(Globals.putanjaKonekcije))
             {
                 string query = "SELECT * FROM racun";
                 OleDbCommand command = new OleDbCommand(query, connection);
@@ -38,18 +39,41 @@ namespace NaplatneRampeSrbije
                     _ = MessageBox.Show(c.VremeIzlaska.ToString());
                 }
                 reader.Close();
-            }
+            }*/
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             if (_loginController.Login(usernameTextBox.Text, passwordBox.Password))
             {
-                _ = MessageBox.Show(Globals.ulogovaniRadnik.Ime + " " + Globals.ulogovaniRadnik.Prezime);
+                if (Globals.ulogovaniRadnik.RadnoMesto == RadnoMesto.Admininstrator)
+                {
+                    AdministratorMainView administratorMainView = new AdministratorMainView();
+                    administratorMainView.Show();
+                }
+                else if (Globals.ulogovaniRadnik.RadnoMesto == RadnoMesto.Menadzer)
+                {
+                    MenadzerMainView menadzerMainView = new MenadzerMainView();
+                    menadzerMainView.Show();
+                }
+
+                // ovaj else if mozes da izbrises sto se mene tice
+                else if (Globals.ulogovaniRadnik.RadnoMesto == RadnoMesto.ReferentNaplate)
+                {
+                    // kada budes otvarao moj prozor za generisanje racuna moras da prosledis
+                    // 1. vrstu vozila: VrstaVozila
+                    // 2. valutu: Valuta
+                    // 3. naplatno mesto ulazak id: string
+                    // 4. vreme izlaska: DateTime
+                    // za naplatno mesto ulaska pazi da ne bude sa iste naplatne stanice na kojoj radi referent jer ne postoji ta deonica u bazi pa ce da baca gresku
+                    GenerisanjeRacunaView generisanjeRacunaView = new GenerisanjeRacunaView(VrstaVozila.Automobil, Valuta.Dinar, "5", new DateTime());
+                    generisanjeRacunaView.Show();
+                }
+
             }
             else
             {
-                _ = MessageBox.Show("Nisam nasa radnika");
+                _ = MessageBox.Show("Nisam nasao radnika");
             }
         }
     }
