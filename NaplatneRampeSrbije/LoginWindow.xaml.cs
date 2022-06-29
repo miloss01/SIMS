@@ -58,7 +58,6 @@ namespace NaplatneRampeSrbije
                     rucnaNaplataPutarineView.Show();
                     Close();
                 }
-
             }
             else
             {

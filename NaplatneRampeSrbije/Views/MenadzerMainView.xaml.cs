@@ -35,6 +35,12 @@ namespace NaplatneRampeSrbije.Views
             statistikaProlaskaVozila.Show();
         }
 
+        private void statistikaONaplatamaMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            StatistikaBrojaNaplata statistikaBrojaNaplata = new StatistikaBrojaNaplata();
+            statistikaBrojaNaplata.Show();
+        }
+
         private void WindowClosing(object sender, CancelEventArgs e)
         {
             Globals.ulogovaniRadnik = null;

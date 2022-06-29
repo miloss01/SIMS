@@ -14,7 +14,13 @@ namespace NaplatneRampeSrbije.Models
 
         public NaplatnaStanica()
         {
+        }
 
+        public NaplatnaStanica(Adresa adresa)
+        {
+            NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
+            ID = (Convert.ToInt32(naplatnaStanicaRepo.GetLargestID()) + 1).ToString();
+            Adresa = adresa;
         }
 
         public NaplatnaStanica(string iD, Adresa adresa)

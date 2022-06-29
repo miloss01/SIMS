@@ -15,7 +15,6 @@ namespace NaplatneRampeSrbije.Models
 
         public NaplatnoMesto()
         {
-
         }
 
         public NaplatnoMesto(string id, NaplatnaStanica naplatnaStanica, bool elNaplata)
@@ -28,7 +27,7 @@ namespace NaplatneRampeSrbije.Models
         public NaplatnoMesto(OleDbDataReader reader)
         {
             ID = reader[0].ToString();
-            NaplatnaStanica = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[1].ToString());
+            NaplatnaStanica = naplatnaStanicaRepo.Get(reader[1].ToString());
             ElNaplata = Convert.ToBoolean(reader[2]);
         }
 
