@@ -1,0 +1,40 @@
+﻿<Window x:Class="NaplatneRampeSrbije.Views.PrijavaKvaraView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NaplatneRampeSrbije.Views"
+        mc:Ignorable="d"
+        Title="PrijavaKvaraView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Name="MasinaLabel" Content="Masina" Grid.Column="1" Grid.Row="1"/>
+        <Label Name="VrstaKvaraLabel" Content="Vrsta kvara" Grid.Column="2" Grid.Row="1" Margin="30 0 0 0"/>
+        <Label Name ="OpisLabel" Content="Opis" Grid.Column="1" Grid.Row="3" Margin="0 30 0 0"></Label> 
+        <ComboBox Name="MasinaComboBox" SelectedIndex="0" Grid.Column="1" Grid.Row="2">
+            <ComboBoxItem Content="Rampa"></ComboBoxItem>
+            <ComboBoxItem Content="Semafor"></ComboBoxItem>
+            <ComboBoxItem Content="Kamera"></ComboBoxItem>
+        </ComboBox>
+        <ComboBox Name="VrstaKvaraComboBox" SelectedIndex="0" Grid.Column="2" Grid.Row="2" Margin="30 0 0 0">
+            <ComboBoxItem Content="Fizicko ostecenje"></ComboBoxItem>
+            <ComboBoxItem Content="Elektronsko ostecenje"></ComboBoxItem>
+        </ComboBox>
+        <TextBox Name="OpisTextBox" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Height="100"></TextBox>
+        <Button Name ="PosaljiButton" Content="Posalji" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Margin="0 20 0 0" Click="PosaljiButton_Click"></Button>
+    </Grid>
+</Window>
