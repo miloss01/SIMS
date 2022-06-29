@@ -35,6 +35,12 @@ namespace NaplatneRampeSrbije.Views
             korisnikCRUDView.Show();
         }
 
+        private void naplatnaStanicaCRUD_Click(object sender, RoutedEventArgs e)
+        {
+            CRUDNaplatnaStanicaView naplatnaStanicaView = new CRUDNaplatnaStanicaView();
+            naplatnaStanicaView.Show();
+        }
+
         private void WindowClosing(object sender, CancelEventArgs e)
         {
             Globals.ulogovaniRadnik = null;

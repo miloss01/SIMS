@@ -61,7 +61,7 @@ namespace NaplatneRampeSrbije.Models
             else if (RadnoMesto == RadnoMesto.SefNaplatneStanice)
             {
                 NaplatnoMesto = null;
-                NaplatnaStanica = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[9].ToString());
+                NaplatnaStanica = naplatnaStanicaRepo.Get(reader[9].ToString());
             }
             else
             {

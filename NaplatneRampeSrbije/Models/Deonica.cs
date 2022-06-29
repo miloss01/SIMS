@@ -31,8 +31,8 @@ namespace NaplatneRampeSrbije.Models
         {
             ID = reader[0].ToString();
             Duzina = Convert.ToInt32(reader[1]);
-            PocetnaNaplatnaStanicaID = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[2].ToString());
-            KrajnjaNaplatnaStanicaID = naplatnaStanicaRepo.GetNaplatnaStanicaById(reader[3].ToString());
+            PocetnaNaplatnaStanicaID = naplatnaStanicaRepo.Get(reader[2].ToString());
+            KrajnjaNaplatnaStanicaID = naplatnaStanicaRepo.Get(reader[3].ToString());
         }
     }
 }
