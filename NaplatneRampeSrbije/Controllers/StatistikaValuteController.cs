@@ -13,7 +13,7 @@ namespace NaplatneRampeSrbije.Controllers
 
         public List<NaplatnaStanica> GetAllNaplatnaStanica()
         {
-            return naplatnaStanicaRepo.GetAllNaplatnaStanica();
+            return naplatnaStanicaRepo.GetAll();
         }
 
         public int GetBrojPlacanjaUValutiZaStanicu(string id, Valuta valuta)

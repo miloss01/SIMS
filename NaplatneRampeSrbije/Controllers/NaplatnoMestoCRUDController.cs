@@ -18,7 +18,7 @@ namespace NaplatneRampeSrbije.Controllers
 
         public List<NaplatnaStanica> GetAllNaplatnaStanica()
         {
-            return naplatnaStanicaRepo.GetAllNaplatnaStanica();
+            return naplatnaStanicaRepo.GetAll();
         }
 
         public bool SaveNaplatnoMesto(string id, string naplatnaStanicaID, bool elNaplata)
@@ -26,7 +26,7 @@ namespace NaplatneRampeSrbije.Controllers
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(naplatnaStanicaID))
                 return false;
 
-            NaplatnoMesto naplatnoMesto = new NaplatnoMesto(id, naplatnaStanicaRepo.GetNaplatnaStanicaById(naplatnaStanicaID), elNaplata);
+            NaplatnoMesto naplatnoMesto = new NaplatnoMesto(id, naplatnaStanicaRepo.Get(naplatnaStanicaID), elNaplata);
 
             naplatnoMestoRepo.SaveNaplatnoMesto(naplatnoMesto);
             return true;
@@ -37,7 +37,7 @@ namespace NaplatneRampeSrbije.Controllers
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(naplatnaStanicaID))
                 return false;
 
-            NaplatnoMesto naplatnoMesto = new NaplatnoMesto(id, naplatnaStanicaRepo.GetNaplatnaStanicaById(naplatnaStanicaID), elNaplata);
+            NaplatnoMesto naplatnoMesto = new NaplatnoMesto(id, naplatnaStanicaRepo.Get(naplatnaStanicaID), elNaplata);
 
             naplatnoMestoRepo.EditNaplatnoMesto(naplatnoMesto);
             return true;

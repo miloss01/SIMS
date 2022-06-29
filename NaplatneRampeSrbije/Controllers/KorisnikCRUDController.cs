@@ -36,7 +36,7 @@ namespace NaplatneRampeSrbije.Controllers
                         break;
                     case RadnoMesto.SefNaplatneStanice:
                         NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
-                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, naplatnaStanicaRepo.GetNaplatnaStanicaById(mestoRadaId));
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, naplatnaStanicaRepo.Get(mestoRadaId));
                         break;
                     case RadnoMesto.Menadzer:
                         r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, null);
@@ -75,7 +75,7 @@ namespace NaplatneRampeSrbije.Controllers
                         break;
                     case RadnoMesto.SefNaplatneStanice:
                         NaplatnaStanicaRepo naplatnaStanicaRepo = new NaplatnaStanicaRepo();
-                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, naplatnaStanicaRepo.GetNaplatnaStanicaById(mestoRadaId));
+                        r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, naplatnaStanicaRepo.Get(mestoRadaId));
                         break;
                     case RadnoMesto.Menadzer:
                         r = new Radnik(id, ime, prezime, pol, telefon, radnoMesto, korisnickoIme, lozinka, adresa, null, null);

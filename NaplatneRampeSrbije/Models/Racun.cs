@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    class Racun
+    internal class Racun
     {
         private NaplatnoMestoRepo naplatnoMestoRepo = new NaplatnoMestoRepo();
         public string ID { get; set; }
@@ -19,7 +19,6 @@ namespace NaplatneRampeSrbije.Models
 
         public Racun()
         {
-
         }
 
         public Racun(string id, VrstaVozila vrstaVozila, double cena, Valuta valuta, DateTime vremeIzlaska, NaplatnoMesto naplatnoMesto, NaplatnoMesto mestoUlaska)
@@ -39,7 +38,7 @@ namespace NaplatneRampeSrbije.Models
             VrstaVozila = (VrstaVozila)reader[1];
             Cena = Convert.ToDouble(reader[2]);
             Valuta = (Valuta)reader[3];
-            VremeIzlaska = DateTime.Parse(reader[4].ToString());
+            VremeIzlaska = DateTime.ParseExact(reader[4].ToString(), Globals.formatDatumVreme, null);
             MestoIzlaska = naplatnoMestoRepo.GetNaplatnoMestoById(reader[5].ToString());
             MestoUlaska = naplatnoMestoRepo.GetNaplatnoMestoById(reader[6].ToString());
         }

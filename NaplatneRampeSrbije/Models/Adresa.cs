@@ -10,19 +10,27 @@ namespace NaplatneRampeSrbije.Models
     {
         public string ID { get; set; }
         public string Ulica { get; set; }
-        public string PostanskiBroj { get; set; }
+        public string Broj { get; set; }
         public Mesto Mesto { get; set; }
 
         public Adresa()
         {
-
         }
 
-        public Adresa(string id, string ulica, string postanskiBroj, Mesto mesto)
+        public Adresa(string id, string ulica, string broj, Mesto mesto)
         {
             ID = id;
             Ulica = ulica;
-            PostanskiBroj = postanskiBroj;
+            Broj = broj;
+            Mesto = mesto;
+        }
+
+        public Adresa(string ulica, string broj, Mesto mesto)
+        {
+            AdresaRepo adresaRepo = new AdresaRepo();
+            ID = Convert.ToInt32(adresaRepo.GetLargestID() + 1).ToString();
+            Ulica = ulica;
+            Broj = broj;
             Mesto = mesto;
         }
 
@@ -31,13 +39,13 @@ namespace NaplatneRampeSrbije.Models
             MestoRepo mestoRepo = new MestoRepo();
             ID = reader[0].ToString();
             Ulica = reader[1].ToString();
-            PostanskiBroj = reader[2].ToString();
+            Broj = reader[2].ToString();
             Mesto = mestoRepo.GetMestoById(reader[3].ToString());
         }
 
         public override string ToString()
         {
-            return Ulica + " " + PostanskiBroj;
+            return Ulica + " " + Broj;
         }
     }
 }

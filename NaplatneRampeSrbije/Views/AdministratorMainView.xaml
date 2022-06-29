@@ -16,9 +16,14 @@
                     <MenuItem Header="_Naplatno mesto CRUD"
                               x:Name="naplatnoMestoCRUD"
                               Click="naplatnoMestoCRUD_Click" />
+
                     <MenuItem Header="_Korisnik CRUD"
-                              x:Name="korisnikCRUD" 
+                              x:Name="korisnikCRUD"
                               Click="korisnikCreate_Click" />
+
+                    <MenuItem Header="_NaplatnaStanica CRUD"
+                              x:Name="naplatnaStanicaCRUD"
+                              Click="naplatnaStanicaCRUD_Click" />
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>
