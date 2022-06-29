@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NaplatneRampeSrbije.Models
 {
-    class Kvar
+    public class Kvar
     {
         public string ID { get; set; }
         public Oprema Oprema { get; set; }

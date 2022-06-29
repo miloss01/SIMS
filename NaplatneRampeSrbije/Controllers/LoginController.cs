@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Text;
+using System.Windows;
 
 namespace NaplatneRampeSrbije.Controllers
 {
@@ -24,8 +25,9 @@ namespace NaplatneRampeSrbije.Controllers
                     reader.Close();
                 }
             }
-            catch
+            catch(Exception e)
             {
+                MessageBox.Show(e.Message);
                 Globals.ulogovaniRadnik = null;
             }
 

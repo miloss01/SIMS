@@ -45,7 +45,12 @@ namespace NaplatneRampeSrbije
                     menadzerMainView.Show();
                     Close();
                 }
-
+                else if(Globals.ulogovaniRadnik.RadnoMesto == RadnoMesto.SefNaplatneStanice)
+                {
+                    SefNaplatneStaniceView sefNaplatneStaniceView = new SefNaplatneStaniceView();
+                    sefNaplatneStaniceView.Show();
+                    Close();
+                }
                 // ovaj else if mozes da izbrises sto se mene tice
                 else if (Globals.ulogovaniRadnik.RadnoMesto == RadnoMesto.ReferentNaplate)
                 {
