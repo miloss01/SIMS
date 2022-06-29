@@ -1,4 +1,5 @@
-﻿using NaplatneRampeSrbije.Models;
+﻿using NaplatneRampeSrbije.Controllers;
+using NaplatneRampeSrbije.Models;
 using NaplatneRampeSrbije.Repository;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,18 @@ namespace NaplatneRampeSrbije.Views
     /// </summary>
     public partial class SefNaplatneStaniceView : Window
     {
-        private KvarRepo kvarRepo;
+        private KvarRepo _kvarRepo;
+        private SefNaplatneStaniceController _sefNaplatneStaniceController;
         public SefNaplatneStaniceView()
         {
-            kvarRepo = new KvarRepo();
+            _sefNaplatneStaniceController = new SefNaplatneStaniceController();
+            _kvarRepo = new KvarRepo();
             InitializeComponent();
         }
 
         private void PrijavaKvaraButton_Click(object sender, RoutedEventArgs e)
         {
-            PrijavaKvaraView prijavaKvaraView = new PrijavaKvaraView(kvarRepo);
+            PrijavaKvaraView prijavaKvaraView = new PrijavaKvaraView(_kvarRepo);
             prijavaKvaraView.Show();
         }
 
@@ -36,6 +39,11 @@ namespace NaplatneRampeSrbije.Views
         {
             PregledKvarovaView pregledKvarovaView = new PregledKvarovaView();
             pregledKvarovaView.Show();
+        }
+
+        private void KreiranjeIzvestajaButton_Click(object sender, RoutedEventArgs e)
+        {
+            _sefNaplatneStaniceController.GenerisanjeIzvestaja();
         }
     }
 }

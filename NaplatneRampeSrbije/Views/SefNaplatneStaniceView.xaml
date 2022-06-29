@@ -16,9 +16,11 @@
             <RowDefinition Height ="*"></RowDefinition>
             <RowDefinition Height ="auto"></RowDefinition>
             <RowDefinition Height ="auto"></RowDefinition>
+            <RowDefinition Height ="auto"></RowDefinition>
             <RowDefinition Height ="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Button Name="PrijavaKvaraButton" Grid.Column="1" Grid.Row="1" Content="Prijava kvara" Click="PrijavaKvaraButton_Click"/>
         <Button Name="PregledKvarovaButton" Grid.Column="1" Grid.Row="2" Content="Pregled kvarova" Margin="0 10 0 0" Click="PregledKvarovaButton_Click"/>
+        <Button Name="KreiranjeIzvestajaButton" Grid.Column="1" Grid.Row="3" Content="Kreiranje izvestaja" Margin="0 10 0 0" Click="KreiranjeIzvestajaButton_Click" />
     </Grid>
 </Window>
